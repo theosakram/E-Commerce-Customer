@@ -59,7 +59,12 @@ export default {
               });
             })
             .catch(err => {
-              console.log(err);
+              let msg = err.response.data.errors[0].msg;
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: msg
+              });
             });
         }
       }

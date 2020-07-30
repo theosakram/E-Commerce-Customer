@@ -88,10 +88,11 @@ export default {
           this.$router.push("/login");
         })
         .catch(err => {
+          let msg = err.response.data.errors[0].msg;
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: err.response.statusText
+            text: msg
           });
         });
     }

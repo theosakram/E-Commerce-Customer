@@ -48,10 +48,11 @@ export default {
           this.FetchCarts(localStorage.id);
         })
         .catch(err => {
+          let msg = err.response.data.errors[0].msg;
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: err
+            text: msg
           });
         });
     },
