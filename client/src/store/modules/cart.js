@@ -14,7 +14,7 @@ const actions = {
   AddToCart: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/cart/${payload.user_id}`,
+        url: `https://damp-forest-46202.herokuapp.com/cart/${payload.user_id}`,
         method: "post",
         data: {
           product_id: payload.product_id,
@@ -35,7 +35,7 @@ const actions = {
   EditQuantity: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/cart/edit/${payload.id}`,
+        url: `https://damp-forest-46202.herokuapp.com/cart/edit/${payload.id}`,
         method: "put",
         data: {
           newQuantity: payload.quantity,
@@ -56,7 +56,7 @@ const actions = {
   FetchCarts: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/cart/${payload}`,
+        url: `https://damp-forest-46202.herokuapp.com/cart/${payload}`,
         method: "get",
         headers: {
           access_token: localStorage.access_token,
@@ -75,7 +75,7 @@ const actions = {
   Checkout: ({ commit }) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: "http://localhost:3000/cart/checkout",
+        url: "https://damp-forest-46202.herokuapp.com/cart/checkout",
         method: "put",
         headers: {
           access_token: localStorage.access_token,
@@ -93,7 +93,7 @@ const actions = {
   History: ({ commit }) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: "http://localhost:3000/cart/transaction/history",
+        url: "https://damp-forest-46202.herokuapp.com/cart/transaction/history",
         method: "get",
         headers: {
           access_token: localStorage.access_token,
@@ -112,7 +112,7 @@ const actions = {
   DeleteCart: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/cart/${payload}`,
+        url: `https://damp-forest-46202.herokuapp.com/cart/${payload}`,
         method: "delete",
         headers: {
           access_token: localStorage.access_token,

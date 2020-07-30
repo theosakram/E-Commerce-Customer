@@ -6,7 +6,7 @@ const actions = {
   Login: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: "http://localhost:3000/users/login",
+        url: "https://damp-forest-46202.herokuapp.com/users/login",
         method: "post",
         data: payload,
       })
@@ -25,7 +25,7 @@ const actions = {
   Register: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: "http://localhost:3000/users/register",
+        url: "https://damp-forest-46202.herokuapp.com/users/register",
         method: "post",
         data: payload,
       })

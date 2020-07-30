@@ -10,7 +10,7 @@ const actions = {
   fetchProducts: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/products`,
+        url: `https://damp-forest-46202.herokuapp.com/products`,
         headers: {
           access_token: localStorage.access_token,
         },
@@ -28,7 +28,7 @@ const actions = {
   AddProduct: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: "http://localhost:3000/products",
+        url: "https://damp-forest-46202.herokuapp.com/products",
         method: "post",
         data: payload,
         headers: {
@@ -47,7 +47,7 @@ const actions = {
   editProduct: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/products/${payload.id}`,
+        url: `https://damp-forest-46202.herokuapp.com/products/${payload.id}`,
         method: "put",
         data: {
           name: payload.name,
@@ -72,7 +72,7 @@ const actions = {
   DeleteProduct: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       Axios({
-        url: `http://localhost:3000/products/${payload}`,
+        url: `https://damp-forest-46202.herokuapp.com/products/${payload}`,
         method: "delete",
         headers: {
           access_token: localStorage.access_token,

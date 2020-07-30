@@ -2,7 +2,7 @@
 
 ## URL
 
-[Cyanide With Rice](https://e-cms-f14a6.web.app/)
+[Cyanide With Rice](https://cyanide-with-rice.web.app/)
 
 ## Route-Flows
 
