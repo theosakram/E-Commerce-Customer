@@ -1,6 +1,7 @@
 const { Cart, Category, Product, User } = require("../models");
 const { compare } = require("../helper/bcrypt");
 const { createToken } = require("../helper/jwt");
+
 class CommandCenter {
   // USER
   static async register(req, res, next) {

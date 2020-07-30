@@ -11,8 +11,6 @@
         <p class="garmin">{{ cart.Product.name }}</p>
         <div class="columns">
           <div class="column">
-            <!-- <p>Qty: {{ cart.quantity }}</p> -->
-
             <div class="buttons is-centered has-addons">
               <button @click.prevent="minusOne()" class="button">-</button>
               <button class="button">{{ cart.quantity }}</button>
@@ -156,6 +154,9 @@ export default {
   margin-top: 35px;
   font-size: 15px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footer-garmin {

@@ -1,6 +1,9 @@
 <template>
   <div class="column">
-    <h5 class="title" style="text-align: center;">{{ cart.Product.name }} x {{ cart.quantity }}</h5>
+    <h5
+      class="title"
+      style="text-align: center;"
+    >{{ cart.Product.name }} x {{ cart.quantity }}: {{totalPrice}}</h5>
   </div>
 </template>
 
@@ -17,6 +20,11 @@ export default {
   computed: {
     thisPrice() {
       return numeral(this.product.price).format("000,00");
+    },
+    totalPrice() {
+      return numeral(this.cart.quantity * this.cart.Product.price).format(
+        "000,00"
+      );
     }
   }
 };

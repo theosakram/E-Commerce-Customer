@@ -24,6 +24,7 @@ const actions = {
         },
       })
         .then(({ data }) => {
+          console.log(data)
           resolve(true);
         })
         .catch((err) => {
@@ -63,6 +64,7 @@ const actions = {
         },
       })
         .then(({ data }) => {
+          console.log(data)
           commit("setCarts", data);
           resolve(true);
         })

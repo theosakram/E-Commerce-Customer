@@ -88,7 +88,6 @@ export default {
         this.$router.push("/");
       } else {
         this.token = "";
-        // this.$router.push("/login");
         localStorage.clear();
       }
     },

@@ -25,13 +25,6 @@ export default {
     thisProduct() {
       return this.$store.getters.oneProduct(this.$route.params.product);
     }
-  },
-  created() {
-    if (this.$route.path !== "/") {
-      if (!localStorage.access_token) {
-        this.$router.push("/login");
-      }
-    }
   }
 };
 </script>

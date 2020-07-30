@@ -46,6 +46,7 @@ export default {
             text: "Product is not available"
           });
         } else {
+          console.log(value);
           this.$store
             .dispatch("AddToCart", {
               user_id: localStorage.id,
