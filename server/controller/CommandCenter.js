@@ -79,28 +79,35 @@ class CommandCenter {
     let { user_id } = req.params;
     let { product_id } = req.body;
     try {
-      const search = await Cart.findOne({
-        where: { user_id, product_id, status: false },
-      });
-      if (search) {
-        let edited = {
-          quantity: search.quantity + 1,
-        };
-        const newCart = await Cart.update(edited, {
-          where: {
-            product_id,
-          },
-        });
-        res.status(200).json({ msg: "Item added to Cart" });
-      } else {
-        const cart = await Cart.create({
-          user_id,
-          product_id,
-          quantity: 1,
-          status: false,
-        });
-        res.status(200).json(cart);
-      }
+      const product = await Product.findByPk(product_id)
+      if (product) {
+        if (product.stock === 0) {
+          throw { status: 400, msg: "Product is not available" }
+        } else {
+          const search = await Cart.findOne({
+            where: { user_id, product_id, status: false },
+          });
+          if (search) {
+            let edited = {
+              quantity: search.quantity + 1,
+            };
+            const newCart = await Cart.update(edited, {
+              where: {
+                product_id,
+              },
+            });
+            res.status(200).json({ msg: "Item added to Cart" });
+          } else {
+            const cart = await Cart.create({
+              user_id,
+              product_id,
+              quantity: 1,
+              status: false,
+            });
+            res.status(200).json(cart);
+          }
+        }
+      } else throw { status: 400, msg: "Product not found" }
     } catch (err) {
       next(err);
     }

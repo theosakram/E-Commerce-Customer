@@ -39,21 +39,29 @@ export default {
         });
         this.$router.push("/login");
       } else {
-        this.$store
-          .dispatch("AddToCart", {
-            user_id: localStorage.id,
-            product_id: this.product.id
-          })
-          .then(data => {
-            Swal.fire({
-              icon: "success",
-              title: "Yes",
-              text: "Product added to cart successfully"
-            });
-          })
-          .catch(err => {
-            console.log(err);
+        if (this.product.stock === 0) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Product is not available"
           });
+        } else {
+          this.$store
+            .dispatch("AddToCart", {
+              user_id: localStorage.id,
+              product_id: this.product.id
+            })
+            .then(data => {
+              Swal.fire({
+                icon: "success",
+                title: "Yes",
+                text: "Product added to cart successfully"
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
       }
     },
     ...mapActions(["fetchProducts"])
