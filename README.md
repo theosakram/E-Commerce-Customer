@@ -42,7 +42,7 @@
 
         OR
 
-      {"msg": "Wrong email/ password"}
+      { "msg": "Wrong email/ password"}
       ```
 
       `OR`
@@ -128,10 +128,10 @@
 
   - **Success Response (at server)** : <br />
 
-        - **Code** : `201`
-        - **Content** :
+      - **Code** : `201`
+      - **Content** :
 
-          ```javascript
+        ```javascript
             {
               "id": 32,
               "user_id": 1,
@@ -139,7 +139,7 @@
               "quantity": 1,
               "status": false,
             }
-          ```
+        ```
 
   - **Error Response (at server)** : <br />
 
