@@ -1,12 +1,12 @@
-# E-Commerce CMS
+# E-Commerce Customer
 
 ## URL
 
 [Cyanide With Rice](https://cyanide-with-rice.web.app/)
 
 ## Dummy User for Testing
-  -**Email** : dummy@dummy.dummy
-  -**Password** : dummy
+  - **Email** : dummy@dummy.dummy
+  - **Password** : dummy
 
 ## Route-Flows
 
