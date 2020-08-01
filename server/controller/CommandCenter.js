@@ -23,11 +23,7 @@ class CommandCenter {
   static async login(req, res, next) {
     let { email, password } = req.body;
     try {
-      const user = await User.findOne({
-        where: {
-          email,
-        },
-      });
+      const user = await User.findOne({ where: { email } });
       if (user) {
         if (compare(password, user.password)) {
           const access_token = createToken({
@@ -62,11 +58,7 @@ class CommandCenter {
   static async getProduct(req, res, next) {
     try {
       const product = await Product.findAll({
-        include: [
-          {
-            model: Category,
-          },
-        ],
+        include: [{ model: Category }],
         order: [["name", "ASC"]],
       });
       res.status(200).json(product);
@@ -80,10 +72,10 @@ class CommandCenter {
     let { user_id } = req.params;
     let { product_id } = req.body;
     try {
-      const product = await Product.findByPk(product_id)
+      const product = await Product.findByPk(product_id);
       if (product) {
         if (product.stock === 0) {
-          throw { status: 400, msg: "Product is not available" }
+          throw { status: 400, msg: "Product is not available" };
         } else {
           const search = await Cart.findOne({
             where: { user_id, product_id, status: false },
@@ -93,9 +85,7 @@ class CommandCenter {
               quantity: search.quantity + 1,
             };
             const newCart = await Cart.update(edited, {
-              where: {
-                product_id,
-              },
+              where: { product_id },
             });
             res.status(200).json({ msg: "Item added to Cart" });
           } else {
@@ -108,7 +98,7 @@ class CommandCenter {
             res.status(200).json(cart);
           }
         }
-      } else throw { status: 400, msg: "Product not found" }
+      } else throw { status: 400, msg: "Product not found" };
     } catch (err) {
       next(err);
     }
@@ -135,7 +125,7 @@ class CommandCenter {
         quantity: newQuantity,
       };
       const cart = await Cart.update(updated, { where: { id: cart_id } });
-      res.status(200).json({ msg: "Cart edit successfully" });
+      res.status(200).json({ msg: "Cart edited successfully" });
     } catch (err) {
       next(err);
     }
@@ -144,7 +134,9 @@ class CommandCenter {
   static async checkout(req, res, next) {
     let { id } = req.data;
     try {
-      const targets = await Cart.findAll({ where: { user_id: id, status: false } });
+      const targets = await Cart.findAll({
+        where: { user_id: id, status: false },
+      });
       if (targets) {
         for (let i = 0; i < targets.length; i++) {
           const targetProduct = await Product.findByPk(targets[i].product_id);
